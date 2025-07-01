@@ -28,8 +28,8 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import com.mapr.db.MapRDB;
 import com.mapr.db.Table;
 import org.ojai.Document;
-import org.ojai.DocumentStream;
-import org.ojai.store.QueryCondition;
+// import org.ojai.DocumentStream;
+// import org.ojai.store.QueryCondition;
 
 import java.io.IOException;
 import java.util.*;

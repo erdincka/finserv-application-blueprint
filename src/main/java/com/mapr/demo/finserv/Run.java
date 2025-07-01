@@ -4,6 +4,8 @@ import com.google.common.base.Preconditions;
 import static com.mapr.demo.finserv.Producer.configureProducer;
 import java.io.File;
 import java.io.IOException;
+
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,10 +18,12 @@ public class Run {
 
 	public static void main(String[] args) throws IOException, Exception {
 		final String message = "USAGE:\n"
-				+ "\tjava -cp `mapr classpath`:./nyse-taq-streaming-1.0-jar-with-dependencies.jar com.mapr.examples.Run producer [source data file] [stream:topic]\n"
-				+ "\tjava -cp `mapr classpath`:./nyse-taq-streaming-1.0-jar-with-dependencies.jar com.mapr.examples.Run consumer [stream:topic]\n";
+				+ "\tjava -cp `mapr classpath`:./nyse-taq-streaming-1.0-jar-with-dependencies.jar com.mapr.demo.Run producer [source data file] [stream:topic]\n"
+				+ "\tjava -cp `mapr classpath`:./nyse-taq-streaming-1.0-jar-with-dependencies.jar com.mapr.demo.Run consumer [stream:topic]\n";
 		Preconditions.checkArgument(args.length > 1, message);
 
+		BasicConfigurator.configure();
+		
 		switch (args[0]) {
 			case "producer":
 				Producer producer = getProducer(args);

@@ -36,7 +36,7 @@ public class Tick2Test {
 		File tempFile = File.createTempFile("foo", "data");
 		tempFile.deleteOnExit();
 		System.out.printf("file = %s\n", tempFile);
-		byte[] NEWLINE = "\n".getBytes();
+		// byte[] NEWLINE = "\n".getBytes();
 		double t0 = System.nanoTime() * 1e-9;
 		int m = data.size();
 		try (OutputStream out = new BufferedOutputStream(new FileOutputStream(tempFile), 10_000_000)) {

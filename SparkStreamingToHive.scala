@@ -19,7 +19,7 @@ import org.apache.spark.sql.types._
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{ Seconds, StreamingContext }
-import org.apache.spark.streaming.kafka09.{ ConsumerStrategies, KafkaUtils, LocationStrategies }
+import org.apache.spark.streaming.kafka10.{ ConsumerStrategies, KafkaUtils, LocationStrategies }
 import org.apache.spark.streaming.dstream.DStream
 
 object SparkStreamingToHive {

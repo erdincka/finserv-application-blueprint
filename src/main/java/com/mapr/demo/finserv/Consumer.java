@@ -16,28 +16,26 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.*;
+import java.time.Duration;
 import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Consumer {
 
-	private static final Logger LOG = LoggerFactory.getLogger(Consumer.class);
-	private static final long POLL_INTERVAL = 4000;  // consumer poll every X milliseconds
+	// private static final Logger LOG = LoggerFactory.getLogger(Consumer.class);
+	private static final Duration POLL_INTERVAL = Duration.ofMillis(4000);  // consumer poll every X milliseconds
 	private static final long OFFSET_INTERVAL = 10000;  // record offset once every X messages
 	private static final ProducerRecord<String, byte[]> END = new ProducerRecord<>("end", null);
 	private static final AtomicLong COUNT = new AtomicLong();
-	private final boolean verbose;
+	// private final boolean verbose;
 	private final String topic;
 	private int threadCount = 1;
 	private KafkaConsumer consumer;
-	private final int batchSize = 0;
 	private long newcount = 0;
 	private long oldcount = 0;
 
 	public Consumer(final String topic, final boolean verbose, final int threadCount) {
 		this.topic = topic;
-		this.verbose = verbose;
+		// this.verbose = verbose;
 		this.threadCount = threadCount;
 	}
 
@@ -203,10 +201,6 @@ public class Consumer {
 		Properties p = new Properties();
 		p.load(Resources.getResource("producer.props").openStream());
 
-		if (batchSize > 0) {
-			p.setProperty("batch.size", String.valueOf(batchSize));
-		}
-
 		return new KafkaProducer<>(p);
 	}
 
@@ -216,10 +210,6 @@ public class Consumer {
 	private KafkaProducer<String, String> getOffsetProducer() throws IOException {
 		Properties p = new Properties();
 		p.load(Resources.getResource("offset_producer.props").openStream());
-
-		if (batchSize > 0) {
-			p.setProperty("batch.size", String.valueOf(batchSize));
-		}
 
 		return new KafkaProducer<>(p);
 	}

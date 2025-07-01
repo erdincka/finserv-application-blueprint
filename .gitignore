@@ -3,3 +3,4 @@ lib/
 *.iml
 .idea/*
 target/*
+hs_*.log
