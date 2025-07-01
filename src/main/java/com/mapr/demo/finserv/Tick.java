@@ -38,7 +38,7 @@ public class Tick implements Serializable {
 
 	public long getTimeInMillis() {
 		// NYSE TAQ records do not reference year, month, day. So, we'll hard code, for now.
-		Calendar timestamp = new GregorianCalendar(2024, 12, 1);
+		Calendar timestamp = new GregorianCalendar(2013, 12, 1);
 		timestamp.set(Calendar.HOUR, Integer.valueOf(new String(data, 0, 2)));
 		timestamp.set(Calendar.MINUTE, Integer.valueOf(new String(data, 2, 2)));
 		timestamp.set(Calendar.SECOND, Integer.valueOf(new String(data, 4, 2)));
@@ -48,7 +48,7 @@ public class Tick implements Serializable {
 
 	public String getTimeStamp() {
 		// NYSE TAQ records do not reference year, month, day. So, we'll hard code, for now.
-		String yyyy = "2024";
+		String yyyy = "2013";
 		String MM = "12";
 		String dd = "01";
 

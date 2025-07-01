@@ -23,6 +23,11 @@
 	</repositories>
     
 	<dependencies>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bc-fips</artifactId>
+			<version>2.1.0</version>
+		</dependency>
 		<!-- <dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.12</artifactId>
